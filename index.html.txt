@@ -1,0 +1,786 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wind Energy Explorer | STEM Project</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f3faff;
+  color: #203b52;
+}
+
+header {
+  background: #123e5c;
+  color: white;
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 8px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #ffd166;
+}
+
+.hero {
+  background: linear-gradient(135deg,#d9f2ff,#a5dcf4);
+  padding: 65px 7%;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 43px;
+  color: #10476b;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 650px;
+  margin: auto;
+}
+
+.hero img {
+  width: 100%;
+  max-width: 650px;
+  height: 290px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-top: 25px;
+}
+
+.btn {
+  display: inline-block;
+  background: #1685ad;
+  color: white;
+  border: none;
+  padding: 13px 25px;
+  border-radius: 25px;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background: #105c80;
+}
+
+section {
+  padding: 55px 7%;
+}
+
+.section-title {
+  text-align: center;
+  color: #125274;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 5px 18px #b8d5e5;
+  text-align: center;
+}
+
+.card .emoji {
+  font-size: 43px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: #126187;
+}
+
+.card p {
+  line-height: 1.6;
+}
+
+.model-section {
+  background: #e5f5fc;
+}
+
+.upload-area {
+  background: white;
+  border: 2px dashed #4aa5c9;
+  padding: 25px;
+  text-align: center;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+input[type=file] {
+  margin: 15px;
+  max-width: 100%;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 15px;
+  background: #dcecf3;
+}
+
+.caption {
+  text-align: center;
+  margin-top: 7px;
+  font-weight: bold;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 15px;
+}
+
+.step {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  border-left: 5px solid #31a3c7;
+  line-height: 1.7;
+}
+
+.chat-section {
+  background: #e5f5fc;
+}
+
+.chatbox {
+  max-width: 650px;
+  margin: auto;
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px #bdd6e4;
+}
+
+.chat-header {
+  background: #14658a;
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.messages {
+  height: 280px;
+  overflow-y: auto;
+  padding: 18px;
+}
+
+.message {
+  background: #e4f4fc;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  max-width: 90%;
+  line-height: 1.5;
+}
+
+.bot {
+  background: #d9f3e4;
+}
+
+.chat-controls {
+  display: flex;
+  padding: 12px;
+  gap: 8px;
+}
+
+.chat-controls input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #b5d5e5;
+  border-radius: 10px;
+}
+
+.chat-controls button {
+  padding: 12px 17px;
+  border: none;
+  background: #1685ad;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.game-box {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px #bdd6e4;
+  text-align: center;
+}
+
+.question {
+  font-size: 21px;
+  margin: 20px 0;
+}
+
+.answer {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  margin: 10px 0;
+  background: #e4f4fc;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.answer:hover {
+  background: #bce6f7;
+}
+
+.result {
+  font-weight: bold;
+  margin-top: 15px;
+  min-height: 25px;
+}
+
+.lab {
+  background: #e5f5fc;
+  text-align: center;
+}
+
+.lab input {
+  width: 80%;
+  max-width: 400px;
+  margin: 25px;
+  accent-color: #1685ad;
+}
+
+.turbine {
+  font-size: 85px;
+  display: inline-block;
+  margin: 15px;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+footer {
+  background: #123e5c;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  line-height: 1.8;
+}
+
+@media(max-width:600px) {
+  .hero h1 {font-size: 31px;}
+  nav {line-height: 2;}
+  header {justify-content: center;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🌬️ Wind Energy Explorer</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#model">My Model</a>
+    <a href="#science">Science</a>
+    <a href="#chat">Ask Windy</a>
+    <a href="#games">Games</a>
+  </nav>
+</header>
+
+<!-- HOME -->
+
+<div class="hero" id="home">
+  <h1>Discover the Power of Wind!</h1>
+  <p>
+    Welcome to my STEM Science Project!
+    Let's discover how moving air can create clean electricity
+    and help protect our beautiful planet.
+  </p>
+
+  <img
+    src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=1000"
+    alt="Wind turbines"
+  >
+
+  <br>
+  <a href="#science" class="btn">Start Exploring 🚀</a>
+</div>
+
+<!-- INTRODUCTION -->
+
+<section>
+  <h2 class="section-title">What is Wind Energy?</h2>
+
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">🌬️</div>
+      <h3>Wind</h3>
+      <p>Wind is moving air that carries energy.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">⚙️</div>
+      <h3>Wind Turbine</h3>
+      <p>Wind turns the blades of a wind turbine.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">💡</div>
+      <h3>Electricity</h3>
+      <p>A generator converts mechanical energy into electricity.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REAL MODEL PHOTOS -->
+
+<section class="model-section" id="model">
+  <h2 class="section-title">🔬 My Real Wind Turbine Model</h2>
+
+  <p style="text-align:center; margin-bottom:25px;">
+    This is my real STEM project! Explore my model
+    and see how I built my wind turbine.
+  </p>
+
+  <div class="upload-area">
+    <h3>📸 Add Photos of My Project</h3>
+    <p>Upload pictures of your real wind turbine model.</p>
+
+    <input
+      type="file"
+      id="photoUpload"
+      accept="image/*"
+      multiple
+    >
+
+    <div class="gallery" id="gallery">
+    </div>
+  </div>
+
+  <h3 style="text-align:center; margin:30px;">
+    How I Built My Model
+  </h3>
+
+  <div class="steps">
+    <div class="step">
+      <h3>1. Materials 🧰</h3>
+      I collected the materials needed to build my wind turbine.
+    </div>
+
+    <div class="step">
+      <h3>2. Building ⚙️</h3>
+      I made the tower and attached the turbine blades.
+    </div>
+
+    <div class="step">
+      <h3>3. Testing 🌬️</h3>
+      I used moving air to turn the turbine blades.
+    </div>
+
+    <div class="step">
+      <h3>4. Results 💡</h3>
+      I observed how the turbine can produce electricity.
+    </div>
+  </div>
+</section>
+
+<!-- SCIENCE -->
+
+<section id="science">
+  <h2 class="section-title">How Does It Work?</h2>
+
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">🌬️</div>
+      <h3>Step 1: Wind Blows</h3>
+      <p>The wind pushes the turbine blades.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🔄</div>
+      <h3>Step 2: Blades Spin</h3>
+      <p>The blades rotate and turn a shaft.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">⚡</div>
+      <h3>Step 3: Generator</h3>
+      <p>The generator converts movement into electrical energy.</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">💡</div>
+      <h3>Step 4: Electricity</h3>
+      <p>Electricity can power lights and other devices.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHATBOT -->
+
+<section class="chat-section" id="chat">
+  <h2 class="section-title">🤖 Ask Windy!</h2>
+
+  <div class="chatbox">
+    <div class="chat-header">
+      🌬️ Windy - Your Science Friend
+    </div>
+
+    <div class="messages" id="messages">
+      <div class="message bot">
+        Hi! I am Windy! 👋
+        Ask me anything about wind energy!
+      </div>
+    </div>
+
+    <div class="chat-controls">
+      <input
+        id="userInput"
+        type="text"
+        placeholder="Ask me a question..."
+        onkeydown="if(event.key==='Enter')sendMessage()"
+      >
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+</section>
+
+<!-- GAMES -->
+
+<section id="games">
+  <h2 class="section-title">🎮 Wind Energy Quiz</h2>
+
+  <div class="game-box">
+    <h3>Test Your Knowledge!</h3>
+
+    <div class="question" id="question">
+      What is wind energy?
+    </div>
+
+    <div id="answers"></div>
+
+    <div class="result" id="result"></div>
+
+    <button class="btn" onclick="nextQuestion()">
+      Next Question ➜
+    </button>
+
+    <p style="margin-top:15px;">
+      Score: <span id="score">0</span>
+    </p>
+  </div>
+</section>
+
+<!-- EXPERIMENT -->
+
+<section class="lab" id="lab">
+  <h2 class="section-title">🧪 Wind Power Lab</h2>
+
+  <p>Move the slider to change the wind speed!</p>
+
+  <div class="turbine" id="turbine">🌬️</div>
+
+  <h3>Wind Speed: <span id="speed">5</span></h3>
+
+  <input
+    type="range"
+    min="1"
+    max="10"
+    value="5"
+    id="windSlider"
+  >
+
+  <h3>Energy Level: <span id="energy">25</span>%</h3>
+
+  <p style="margin-top:15px;">
+    Stronger wind can help a turbine produce more electricity,
+    up to its rated operating limit.
+  </p>
+</section>
+
+<footer>
+  <h3>🌍 Wind Energy Explorer</h3>
+  <p>My STEM Science Fair Project</p>
+  <p>Learn Today, Save Tomorrow! 💚</p>
+  <p>Created by: [Student Name] | Grade 4</p>
+</footer>
+
+<script>
+
+// PHOTO GALLERY
+
+document.getElementById("photoUpload")
+.addEventListener("change", function(event) {
+
+  const gallery = document.getElementById("gallery");
+
+  Array.from(event.target.files).forEach(file => {
+
+    if (!file.type.startsWith("image/")) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+      const container = document.createElement("div");
+
+      const img = document.createElement("img");
+      img.src = e.target.result;
+      img.alt = "My wind turbine project";
+
+      const caption = document.createElement("p");
+      caption.className = "caption";
+      caption.textContent = file.name;
+
+      container.appendChild(img);
+      container.appendChild(caption);
+
+      gallery.appendChild(container);
+    };
+
+    reader.readAsDataURL(file);
+  });
+
+  event.target.value = "";
+});
+
+
+// WINDY CHATBOT
+
+function sendMessage() {
+
+  const input = document.getElementById("userInput");
+  const messages = document.getElementById("messages");
+
+  const question = input.value.trim().toLowerCase();
+
+  if (!question) return;
+
+  addMessage(input.value, "user");
+
+  let answer = "Great question! Wind energy is an amazing way to make clean electricity. 🌍";
+
+  if (question.includes("what") && question.includes("wind")) {
+    answer = "Wind energy is energy from moving air. We can use it to make electricity! 🌬️";
+  }
+  else if (question.includes("turbine") || question.includes("blade")) {
+    answer = "Wind pushes the blades, making them spin. The spinning parts help drive a generator.";
+  }
+  else if (question.includes("electricity") || question.includes("generator")) {
+    answer = "A generator converts mechanical energy into electrical energy. ⚡";
+  }
+  else if (question.includes("renewable")) {
+    answer = "Yes! Wind energy is renewable because wind is naturally replenished.";
+  }
+  else if (question.includes("pollution") || question.includes("environment")) {
+    answer = "Wind energy produces electricity without burning fuel, so it helps reduce air pollution.";
+  }
+  else if (question.includes("no wind")) {
+    answer = "When there is no wind, a wind turbine may stop producing electricity. Other energy sources or stored electricity can help.";
+  }
+  else if (question.includes("hello") || question.includes("hi")) {
+    answer = "Hello, young scientist! 👋 Ready to explore wind energy?";
+  }
+  else if (question.includes("thank")) {
+    answer = "You are welcome! Keep learning and exploring! ⭐";
+  }
+
+  setTimeout(() => addMessage(answer, "bot"), 300);
+
+  input.value = "";
+}
+
+function addMessage(text, type) {
+
+  const messages = document.getElementById("messages");
+  const message = document.createElement("div");
+
+  message.className = "message " + (type === "bot" ? "bot" : "");
+
+  message.textContent = text;
+
+  messages.appendChild(message);
+
+  messages.scrollTop = messages.scrollHeight;
+}
+
+
+// QUIZ GAME
+
+const questions = [
+  {
+    q: "What is wind energy?",
+    a: ["Energy from moving air", "Energy from rocks", "Energy from plastic"],
+    correct: 0
+  },
+  {
+    q: "What makes turbine blades spin?",
+    a: ["Water", "Wind", "Sand"],
+    correct: 1
+  },
+  {
+    q: "Is wind energy renewable?",
+    a: ["Yes", "No", "Never"],
+    correct: 0
+  },
+  {
+    q: "What does a generator produce?",
+    a: ["Electricity", "Rain", "Clouds"],
+    correct: 0
+  },
+  {
+    q: "Which is a benefit of wind energy?",
+    a: ["More pollution", "Clean electricity", "More plastic"],
+    correct: 1
+  }
+];
+
+let current = 0;
+let score = 0;
+let answered = false;
+
+function showQuestion() {
+
+  answered = false;
+
+  document.getElementById("result").textContent = "";
+
+  const q = questions[current];
+
+  document.getElementById("question").textContent = q.q;
+
+  const answers = document.getElementById("answers");
+
+  answers.innerHTML = "";
+
+  q.a.forEach((answer, index) => {
+
+    const button = document.createElement("button");
+
+    button.className = "answer";
+    button.textContent = answer;
+
+    button.onclick = () => checkAnswer(index);
+
+    answers.appendChild(button);
+  });
+}
+
+function checkAnswer(index) {
+
+  if (answered) return;
+
+  answered = true;
+
+  const correct = questions[current].correct;
+
+  if (index === correct) {
+
+    score++;
+
+    document.getElementById("result").textContent =
+      "Correct! Excellent job! ⭐";
+
+  } else {
+
+    document.getElementById("result").textContent =
+      "Not quite! The correct answer is: " +
+      questions[current].a[correct];
+  }
+
+  document.getElementById("score").textContent = score;
+}
+
+function nextQuestion() {
+
+  current++;
+
+  if (current >= questions.length) {
+
+    document.getElementById("question").textContent =
+      "🎉 Quiz Completed!";
+
+    document.getElementById("answers").innerHTML = "";
+
+    document.getElementById("result").textContent =
+      "Your final score is " + score + " out of " +
+      questions.length + "!";
+
+    return;
+  }
+
+  showQuestion();
+}
+
+showQuestion();
+
+
+// WIND SIMULATOR
+
+const slider = document.getElementById("windSlider");
+
+slider.addEventListener("input", function() {
+
+  const speed = Number(this.value);
+
+  document.getElementById("speed").textContent = speed;
+
+  document.getElementById("energy").textContent =
+    speed * speed;
+
+  const duration = 4 / speed;
+
+  document.getElementById("turbine").style.animationDuration =
+    duration + "s";
+});
+
+</script>
+
+</body>
+</html>
